@@ -6,7 +6,7 @@
 /*   By: restevez <restevez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 07:57:04 by restevez          #+#    #+#             */
-/*   Updated: 2025/04/26 04:47:39 by restevez         ###   ########.fr       */
+/*   Updated: 2025/04/26 05:10:37 by restevez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,26 @@
 # define FALSE			0
 # define TRUE			0
 /* Possible Actions */
-# define THINK			'T'
-# define EAT			'E'
-# define SLEEP			'S'
+# define THINK					'T'
+# define EAT					'E'
+# define SLEEP					'S'
 /* States */
-# define ALIVE			'alive'
-# define DEAD			'deceased'
+# define ALIVE					"alive"
+# define DEAD					"deceased"
 /* Messages */
-# define MEME_DYING_MSG	" was deemed worthless and died of starvation."
-# define EATING_MSG		" is eating"
-# define WORTHING_MSG	" has taken a fork"
-# define THINKING_MSG	" is eating"
-# define SLEEPING_MSG	" is sleeping"
-# define IS_DEAD_MSG	"died"
+# ifdef ALTERNATIVE_VERSION
+#  define IS_DEAD_MSG			"was deemed worthless and died of starvation."
+#  define EATING_MSG			"is eating"
+#  define BECOMING_WORTHY_MSG	"has taken a fork"
+#  define THINKING_MSG			"is eating"
+#  define SLEEPING_MSG			"is sleeping"
+# else
+#  define IS_DEAD_MSG			"died"
+#  define EATING_MSG			"is eating"
+#  define BECOMING_WORTHY_MSG	"has taken a fork"
+#  define THINKING_MSG			"is eating"
+#  define SLEEPING_MSG			"is sleeping"
+# endif
 
 /* A magic table.
 Holds the list of forks (table->forks),
