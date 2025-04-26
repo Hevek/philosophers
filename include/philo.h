@@ -6,7 +6,7 @@
 /*   By: restevez <restevez@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 07:57:04 by restevez          #+#    #+#             */
-/*   Updated: 2025/04/26 04:22:19 by restevez         ###   ########.fr       */
+/*   Updated: 2025/04/26 04:47:39 by restevez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,13 @@
 /* States */
 # define ALIVE			'alive'
 # define DEAD			'deceased'
+/* Messages */
+# define MEME_DYING_MSG	" was deemed worthless and died of starvation."
+# define EATING_MSG		" is eating"
+# define WORTHING_MSG	" has taken a fork"
+# define THINKING_MSG	" is eating"
+# define SLEEPING_MSG	" is sleeping"
+# define IS_DEAD_MSG	"died"
 
 /* A magic table.
 Holds the list of forks (table->forks),
@@ -44,20 +51,21 @@ struct s_table
 	t_forks				**knights;
 };
 
-/* <Place explanation here> */
+typedef struct s_knight	t_knight;
+struct s_knight
+{
+	size_t				hungry_status;
+	size_t				is_worthy;
+	t_knight			*left;
+	t_knight			*right;
+};
+
 typedef struct s_forks	t_forks;
 struct s_forks
 {
-	pthread_mutex_t		mutex;
-};
-
-/* <Place explanation here> */
-typedef struct s_philo	t_philo;
-struct s_philo
-{
-	size_t				id;
-	size_t				last_ate;
-	char				action;
+	pthread_mutex_t		available;
+	t_knight			*knight_l;
+	t_knight			*knight_r;
 };
 
 /* Allowed Functions:
